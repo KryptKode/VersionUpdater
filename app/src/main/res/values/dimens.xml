@@ -1,0 +1,16 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="constraint_default_margin_32dp">32dp</dimen>
+
+    <dimen name="constraint_default_margin_8dp">8dp</dimen>
+    <dimen name="constraint_default_margin_16dp">16dp</dimen>
+    <dimen name="constraint_default_margin_4dp">4dp</dimen>
+
+
+    <dimen name="small_text_size">12sp</dimen>
+
+    <dimen name="small_text_size_ex">20sp</dimen>
+
+    <dimen name="big_text_size">48sp</dimen>
+</resources>
