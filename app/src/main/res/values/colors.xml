@@ -6,11 +6,23 @@
 
 
 
-    <color name="colorPrimaryTint">#69008577</color>
+    <color name="colorPrimaryTint">#99008577</color>
 
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
 
     <color name="colorTransparent">#0000</color>
+
+
+
+    <color name="colorGreen">#14cf6b</color>
+    <color name="blue_btn_bg_color">#AEDEF4</color>
+    <color name="blue_btn_bg_pressed_color">#96BFD2</color>
+
+    <color name="gray_btn_bg_color">#D0D0D0</color>
+    <color name="gray_btn_bg_pressed_color">#B6B6B6</color>
+
+    <color name="colorRed">#ea3034</color>
+
 </resources>

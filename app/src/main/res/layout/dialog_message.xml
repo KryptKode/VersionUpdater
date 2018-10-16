@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/constraint_default_margin_8dp"
+    android:background="@drawable/dialog_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/img_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_upgrade"
+        android:padding="@dimen/constraint_default_margin_16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/constraint_default_margin_8dp"
+        android:layout_marginStart="@dimen/constraint_default_margin_8dp"
+        android:layout_marginLeft="@dimen/constraint_default_margin_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:gravity="center"
+        android:typeface="monospace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_title"
+        android:text="Add what's new"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_name"
+        style="@style/InputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        android:layout_marginTop="@dimen/constraint_default_margin_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_name"
+            style="@style/InputStyle"
+            android:hint="Enter text"
+            android:inputType="textCapWords" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/cancel_button"
+        style="@style/dialog_blue_button"
+        android:layout_marginBottom="@dimen/constraint_default_margin_8dp"
+        android:layout_marginEnd="@dimen/constraint_default_margin_8dp"
+        android:layout_marginStart="@dimen/constraint_default_margin_8dp"
+        android:layout_marginTop="@dimen/constraint_default_margin_16dp"
+        android:background="@drawable/gray_button_background"
+        android:textStyle="bold"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/confirm_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_name" />
+
+
+    <Button
+        android:id="@+id/confirm_button"
+        style="@style/dialog_green_button"
+        android:layout_marginBottom="@dimen/constraint_default_margin_8dp"
+        android:layout_marginEnd="@dimen/constraint_default_margin_8dp"
+        android:layout_marginStart="@dimen/constraint_default_margin_8dp"
+        android:layout_marginTop="@dimen/constraint_default_margin_16dp"
+        android:textStyle="bold"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cancel_button"
+        app:layout_constraintTop_toBottomOf="@+id/til_name" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

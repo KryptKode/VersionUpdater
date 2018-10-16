@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <update.version.versionupdater.views.SupportVectorDrawablesButton xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/btn"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,11 +14,11 @@
     android:gravity="start|center"
     android:padding="@dimen/constraint_default_margin_4dp"
     android:singleLine="true"
-    android:text="Whats new"
     android:textAllCaps="false"
     android:textColor="@color/colorAccent"
     app:drawableEndCompat="@drawable/ic_edit_pink"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="Whats new" />
