@@ -23,15 +23,7 @@ public class ActivityUtils {
      * performed by the {@code fragmentManager}.
      *
      */
-    @SuppressLint("RestrictedApi")
-    public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
-                                              @NonNull Fragment fragment, int frameId) {
-        checkNotNull(fragmentManager);
-        checkNotNull(fragment);
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(frameId, fragment);
-        transaction.commit();
-    }
+
 
     public static void invokeActivity(Activity activity, Class<?> tClass, boolean shouldFinish) {
         Intent intent = new Intent(activity, tClass);
@@ -41,39 +33,16 @@ public class ActivityUtils {
         }
     }
 
-   /* public static void invokeActivityWithParcelableExtra(Activity activity, Class<?> tClass, Parcelable parcelable, boolean shouldFinish) {
-        Intent intent = new Intent(activity, tClass);
-        intent.putExtra(Constants.EXTRA_PARAMS, parcelable);
-        activity.startActivity(intent);
-        if (shouldFinish) {
-            activity.finish();
-        }
-    }
 
 
-    public static void invokeActivityWithString(Activity activity, Class<?> tClass, String uid, String username, boolean shouldFinish) {
-        Intent intent = new Intent(activity, tClass);
-        intent.putExtra(Constants.EXTRA_PARAMS, uid);
-        intent.putExtra(Constants.ARG_RECEIVER, username);
-        activity.startActivity(intent);
-        if (shouldFinish) {
-            activity.finish();
-        }
-    }
-
-
-    public static void showFragment(FragmentManager fragmentManager, Fragment fragment){
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        transaction.replace(R.id.fragment_root, fragment);
-        transaction.commit();
-    }
-
-    public static void showNoLayoutFragment(FragmentManager fragmentManager, Fragment fragment){
+    @SuppressLint("RestrictedApi")
+    public static void addFragmentToActivity(FragmentManager fragmentManager, Fragment fragment){
+        checkNotNull(fragmentManager);
+        checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         transaction.replace(android.R.id.content, fragment);
         transaction.commit();
-    }*/
+    }
 
 }

@@ -14,4 +14,8 @@ public class AddFragment extends BaseFragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+
+
+
 }

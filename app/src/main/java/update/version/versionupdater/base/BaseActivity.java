@@ -15,13 +15,13 @@ public abstract class BaseActivity<T extends Fragment> extends AppCompatActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         Fragment fragment = getSupportFragmentManager()
                 .findFragmentById(android.R.id.content);
 
         if (fragment == null) {
             fragment = getFragment();
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, android.R.id.content);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment);
         }
     }
 
