@@ -40,7 +40,7 @@ public class MessageDialog extends DialogFragment {
     @BindView(R.id.til_name)
     TextInputLayout inputLayout;
 
-    @BindViews( R.id.tv_title)
+    @BindView( R.id.tv_title)
     TextView textView;
 
     @BindView(R.id.img_title)

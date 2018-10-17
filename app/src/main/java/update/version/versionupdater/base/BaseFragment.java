@@ -38,18 +38,13 @@ public abstract class BaseFragment<T extends  BasePresenter> extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-
-        if (id == R.id.action_update || id == R.id.action_done) {
-            handleMenuClick();
+            handleMenuClick(item.getItemId());
             return true;
-        }
 
-        return super.onOptionsItemSelected(item);
+
     }
 
-    protected abstract void handleMenuClick();
+    protected abstract void handleMenuClick(int itemId);
 
     @Override
     public void onDetach() {

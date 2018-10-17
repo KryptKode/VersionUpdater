@@ -10,10 +10,8 @@ import update.version.versionupdater.base.BaseView;
 public interface MainFragmentContract {
 
     interface MainView extends BaseView{
-        void showCurrentVersion(int version);
-        void showMessage(String message);
         void showWhatsNew(List<WhatsNew> whatsNewList);
-
+        void showVersion(Version version);
         void onMessageEdit(Version version);
         void onWhatsNewEdit(WhatsNew whatsNew);
         void showAddInterface();

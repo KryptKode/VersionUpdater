@@ -19,4 +19,9 @@
     <string name="loading_">Loading...</string>
     <string name="no_data_error">No data</string>
     <string name="error_occurred">An error occurred, please try again</string>
+    <string name="update_version">Update Version</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="max_whats_new_error">You can only add up to 4 items</string>
+    <string name="update_success">Update added successfully</string>
 </resources>

@@ -29,14 +29,4 @@ public abstract class BaseActivity<T extends Fragment> extends AppCompatActivity
     public abstract T getFragment();
 
 
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-            super.onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

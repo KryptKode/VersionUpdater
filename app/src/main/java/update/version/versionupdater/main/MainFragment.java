@@ -1,16 +1,20 @@
 package update.version.versionupdater.main;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import update.version.versionupdater.R;
@@ -42,12 +46,24 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
     @BindView(R.id.rv_whats_new)
     EmptyRecyclerView recyclerView;
 
+    @BindView(R.id.root_srl)
+    SwipeRefreshLayout swipeRefreshLayout;
+
 
     @BindView(R.id.empty_view)
     View emptyView;
 
 
+    @BindView(R.id.img_msg_edit)
+    ImageView editImageView;
+
+
+    @BindViews({R.id.tv_current_version_label, R.id.tv_msg_label})
+    List<TextView> textViewList;
+
+
     private WhatsNewAdapter whatsNewAdapter;
+    private Version version;
     private LoadingDialog loadingDialog;
 
 
@@ -71,10 +87,16 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
     }
 
     private void initView() {
+        for (TextView textView : textViewList) {
+            textView.setSelected(true);
+        }
         loadingDialog = new LoadingDialog(getContext(), R.drawable.ic_reset, R.string.loading_);
         whatsNewAdapter = new WhatsNewAdapter(this);
         recyclerView.setEmptyView(emptyView);
         recyclerView.setAdapter(whatsNewAdapter);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            getPresenter().start();
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new ItemDivider(getContext()));
     }
@@ -91,19 +113,25 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
     }
 
     @Override
-    protected void handleMenuClick() {
-       getPresenter().handleAddClick();
+    protected void handleMenuClick(int itemId) {
+        if(itemId == R.id.action_update){
+            getPresenter().handleAddClick();
+        }
     }
 
     @Override
-    public void showCurrentVersion(int version) {
-        currentVersionTextView.setText(String.valueOf(version));
+    public void showVersion(Version version) {
+        this.version = version;
+        currentVersionTextView.setText(String.valueOf(version.getVersion()));
+        if (!TextUtils.isEmpty(version.getMessage())) {
+            editImageView.setVisibility(View.VISIBLE);
+            messageTextView.setText(version.getMessage());
+        }else{
+            editImageView.setVisibility(View.GONE);
+        }
     }
 
-    @Override
-    public void showMessage(String message) {
-        messageTextView.setText(message);
-    }
+
 
     @Override
     public void showWhatsNew(List<WhatsNew> whatsNewList) {
@@ -144,11 +172,13 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
 
     @Override
     public void showProgress() {
+        swipeRefreshLayout.setRefreshing(true);
         loadingDialog.show();
     }
 
     @Override
     public void hideProgress() {
+        swipeRefreshLayout.setRefreshing(false);
         loadingDialog.dismiss();
     }
 
@@ -166,16 +196,16 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
 
     @OnClick(R.id.img_msg_edit)
     public void editMessage(){
-        getPresenter().handleMessageEditClick(null);
+        getPresenter().handleMessageEditClick(version);
     }
 
     @Override
     public void onMessageListener(Version version, boolean isEdit) {
-
+        getPresenter().updateMessage(version);
     }
 
     @Override
     public void onWhatsNewListener(WhatsNew whatsNew, boolean isEdit) {
-
+        getPresenter().updateWhatsNew(whatsNew);
     }
 }

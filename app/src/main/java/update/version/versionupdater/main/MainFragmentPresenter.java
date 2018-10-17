@@ -2,7 +2,6 @@ package update.version.versionupdater.main;
 
 import android.text.TextUtils;
 
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -51,7 +50,7 @@ public class MainFragmentPresenter implements MainFragmentContract.MainPresenter
                         if (version1 != null) {
                             if(!TextUtils.isEmpty(version1.getMessage())){
 
-                                view.showMessage(version1.getMessage());
+                                view.showVersion(version1);
                             }else{
                                 view.notifyUser(R.string.error_occurred);
                                 Timber.e("Failed with error: %s", version1.getMessage());
@@ -105,10 +104,11 @@ public class MainFragmentPresenter implements MainFragmentContract.MainPresenter
                 .subscribe(queryResponse -> {
                     view.hideProgress();
                     if (queryResponse != null) {
-                        if(!TextUtils.isEmpty(queryResponse.getError())){
-                            view.showCurrentVersion(queryResponse.getVersion().getVersion());
-                            view.showMessage(queryResponse.getVersion().getMessage());
-                            view.showWhatsNew(queryResponse.getWhatsNew());
+                        if(TextUtils.isEmpty(queryResponse.getError())){
+                            view.showVersion(queryResponse.getVersion());
+                            if (queryResponse.getWhatsNew() != null) {
+                                view.showWhatsNew(queryResponse.getWhatsNew());
+                            }
                         }else{
                             view.notifyUser(R.string.error_occurred);
                             Timber.e("Failed with error: %s", queryResponse.getError());
@@ -126,6 +126,7 @@ public class MainFragmentPresenter implements MainFragmentContract.MainPresenter
     private boolean isOnline(){
         if (view.isOffline()){
             view.showNoInternetMessage();
+            view.hideProgress();
             return false;
         }
         return true;

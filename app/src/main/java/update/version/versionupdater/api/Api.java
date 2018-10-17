@@ -23,7 +23,6 @@ public interface Api {
 
 
     @POST("test/version/update/")
-    @FormUrlEncoded
     Observable<Version> updateVersion(@Body Version version);
 
 
@@ -33,7 +32,6 @@ public interface Api {
 
 
     @POST("test/whats_new/update/")
-    @FormUrlEncoded
     Observable<List<WhatsNew>> updateWhatsNew(@Body WhatsNew whatsNew);
 
 
